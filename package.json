@@ -1,11 +1,10 @@
 {
   "name": "typeorm-adapter",
-  "version": "1.3.0",
+  "version": "1.7.1",
   "description": "TypeORM adapter for Casbin",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "precommit": "lint-staged",
     "prepublish": "yarn run lint && yarn build",
     "build": "rimraf lib && tsc",
     "coverage": "jest --coverage --runInBand",
