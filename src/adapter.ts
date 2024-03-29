@@ -150,8 +150,17 @@ export default class TypeORMAdapter
     }
     this.filtered = true;
   }
+  
+  private escapeCsv(value: string) {
+    // If the value contains a comma, wrap it in double quotes and escape any existing double quotes
+    if (value.includes(',')) {
+    return `${value.replace(/"/g, '""')}`;
+    }
+    return value;
+}
 
   private savePolicyLine(ptype: string, rule: string[]): GenericCasbinRule {
+    rule = rule.map(element => this.escapeCsv(element))
     const line = new (this.getCasbinRuleConstructor())();
 
     line.ptype = ptype;
